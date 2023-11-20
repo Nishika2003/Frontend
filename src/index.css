@@ -1,13 +1,650 @@
-body {
+html{
+  font-size: 62.5%; 
+  box-sizing: border-box;
+}
+body{
+  font: 1.6rem Helvetica;
+  height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+#root{
+  height:100%;
+}
+.grid-container{
+  display: grid;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100%;
+}
+.header{
+  grid-area: header;
+  background-color: #fff956;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+.brand a{
+  color: #890f9b;
+  font-size: 3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.header-links a{
+  color:#890f9b;
+  text-decoration: none;
+  padding: 1rem;
+  font-weight: bold;
+
+}
+.header-links a:hover{
+  color:#ff8000;
+}
+.main{
+  grid-area: main;
+  background-image: url("./images/pawbg.png");
+  background-size: cover; 
+}
+.footer{
+  grid-area: footer;
+  background-color: #fd9365;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  color:#ff8000
+}
+/* Home Screen */
+.products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.products li {
+  list-style-type: none;
+  padding: 0;
+  flex: 0 1 34rem;
+  margin: 2rem;
+  height: 50rem;
+  background-color: #e0fbff;
+  border-bottom: .1rem #c0c0c0 solid;
+  border-radius: 30px;
+}
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.product-name{
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.product-color{
+  font-size: 1.2 rem;
+  color:#3d3d3d;
+  padding: 0.2rem ;
+}
+.product-breed{
+  font-size: 1.2 rem;
+  color:#3d3d3d;
+  padding: 0.2rem;
+}
+.product-age{
+  font-size: 1.2 rem;
+  color: #3d3d3d;
+  padding: 0.2rem;
+}
+.product-category{
+  font-size: 1.2 rem;
+  color:#3d3d3d;
+  padding: 0.2rem;
+}
+.product-image{
+  max-width: 25rem;
+  max-height: 15rem;
+  align-self: center;
+  border-radius: 30px;
+}
+/*.product-description{
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+/* Sidebar */
+.brand button {
+  font-size: 3rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: #890f9b;
+  cursor: pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.sidebar {
+  position: fixed;
+  transition: all 0.5s;
+  transform: translateX(-30rem);
+  width: 30rem;
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
+  height: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
 }
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-close-button {
+  border-radius: 50%;
+  border: 0.1rem #000000 solid;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  padding-top: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+  color: #890f9b;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 0.5rem 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 1rem;
+  display: block;
+  border-bottom: 1px solid #ddd;
+  transition: color 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover {
+  color: #890f9b;
+  background-color: #f7f7f7;
+}
+
+.adopt-button{
+  width: 10rem;
+  height: 4rem;
+  background-color: #ffaa86;
+  border-radius: 50px;
+  border: none;
+  align-self: center;
+  font-weight: bold;
+}
+/*Product Details*/
+.details{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+.details-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.details-info{
+  flex: 1 1 30rem;
+  margin-left: 2rem;
+  font-weight: bold;
+  padding-top: 2rem;
+}
+.details-action ul, .details-info ul{
+  list-style-type: none;
+}
+.details-action{
+    align-self: flex-end;
+    padding: 0.2rem;
+
+}
+.details-info ul li h1 {
+  font-weight: bold;
+  font-size: 36px;
+  margin: 0;
+}
+
+.details-info ul li h4 {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 5px 0;
+}
+.back-to-result{
+  padding: 1rem;
+  padding-top: 1rem;
+}
+.button{
+  background-color: rgb(102, 236, 248);
+  cursor: pointer;
+  color: rgb(5, 5, 5);
+  margin-top: 10px;
+  border: none;
+  height: 40px;
+  width: 160px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 50px;
+}
+.button:hover{
+  border: 0.5rem rgb(85, 198, 247) solid;
+}
+
+/*Cart*/
+.cart{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+  align-items: flex-start;
+}
+.cart-list{
+  flex: 3 1 60rem;
+}
+.cart-action{
+  flex: 1 1 20rem;
+  background-color: rgb(255, 252, 199);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  align-self: flex-start;
+}
+.cart-status{
+  color: green;
+}
+.cart-list-container{
+  padding: 0;
+  list-style-type: none;
+  padding: 1rem;
+}
+
+.cart-list-container li:first-child{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cart-list-container li img{
+  max-width : 20rem;
+  max-height: 20rem;
+}
+.cart-list-container li {
+  display: flex;
+  align-items: center; 
+
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem grey solid;
+}
+
+.cart-list-container li .cart-image {
+  flex: 0 0 auto; 
+  margin-right: 20px; 
+}
+
+.cart-list-container li .cart-name,
+.cart-list-container li .cart-status {
+  flex: 1; 
+}
+.button2{
+  background-color: rgb(102, 236, 248);
+  cursor: pointer;
+  color: rgb(5, 5, 5);
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  width: 300px;
+  font-size: 1.8rem;
+}
+.button2:hover{
+  border: 0.5rem rgb(85, 198, 247) solid;
+}
+
+
+/* forms */
+.Form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-container{
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem #7f7f7f solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+.form-container li{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+input{
+  padding: 1rem;
+  border: 0.1rem #7f7f7f solid ;
+  border-radius: 0.5rem;
+}
+.buttonreg.secondary{
+  background-color: #f0f080;
+}
+.text-center{
+  text-align: center;
+}
+.buttonreg{
+  width: full-width;
+  height: 40px;
+  border-radius: 1rem;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.button6{
+  background-color: rgb(102, 236, 248);
+  cursor: pointer;
+  color: rgb(5, 5, 5);
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  width: full-width;
+  font-size: 1.8rem;
+}
+
+/* Checkout Steps*/
+
+.checkout-steps{
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+.checkout-steps > div{
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #ac00f0;
+  flex: 1 1;
+  padding-top: 1rem;
+}
+.checkout-steps > div.active{
+  border-top: 0.3rem #f08000 solid;
+  color: #f08000;
+}
+.success{
+  text-align: center;
+  color: rgb(0, 13, 255);
+}
+
+/* Profile */
+.profile {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-info {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2 {
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.button10 {
+  background-color: #db3734;
+  color: #fff;
+  padding: 10px 0; /* Updated padding to 10px 0 for full width */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block; /* Set the button to be a block-level element */
+  width: 100%; /* Make the button take the full width */
+}
+
+.button10:hover {
+  background-color: #820200;
+}
+
+/* CareServicesScreen.css */
+.care-services-container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.carehead{
+  font-weight: bold;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Style for the services container using Flexbox */
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between service boxes */
+  list-style: none;
+  padding: 0;
+}
+
+/* Style for each service container */
+.service-container {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Style for each service box */
+.service-box {
+  padding: 20px;
+}
+
+/* Style for the date picker */
+.react-datepicker-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Style for the "Book" button */
+.button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+/*servicesscreen*/
+/* ServicesScreen.css */
+
+.services-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.service-info {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-info h1 {
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.service-info strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.button7 {
+  background-color: #47db34;
+  color: #fff;
+  padding: 10px 0; /* Updated padding to 10px 0 for full width */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block; /* Set the button to be a block-level element */
+  width: 100%; /* Make the button take the full width */
+}
+
+.button7:hover {
+  background-color: #008223;
+}
+
+/* BookingScreen */
+.Form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-container{
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  list-style-type: none;
+}
+.form-container label{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+input{
+  padding: 1rem;
+}
+.text-center{
+  text-align: center;
+}
+.button8{
+  background-color: rgb(102, 236, 248);
+  cursor: pointer;
+  color: rgb(5, 5, 5);
+  border: none;
+  font-size: 1.8rem;
+  height: 40px;
+  width: 280px;
+  border-radius: 10px;
+}
+.button8:hover {
+  background-color: #0b6eb0;
+}
+.booking-success{
+  color: #008223;
+  font-weight: bold;
+  font-size: 3rem;
+}
+.s1{
+  font-weight: bold;
+}
+.r1{
+  font-weight: bold;
+}
+.p1{
+  font-weight: bold;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.delbutton{
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+}
+.delbutton:hover {
+  background-color: red ;
+}
+.c2{
+  font-weight: bold;
+}
+.s1{
+  font-weight: bold;
+}
+.b1{
+  font-weight: bold;
+  padding-bottom: 2rem;
+}
+.f1{
+  font-weight: bold;
+  padding-bottom: 2rem;
+}
+.i1{
+  text-align: center;
+}
+
+
