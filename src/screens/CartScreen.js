@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 function CartScreen(props) {
