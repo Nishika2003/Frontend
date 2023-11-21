@@ -57,20 +57,20 @@ function CartScreen(props) {
       navigate1("/signin?redirect=shipping");
     }
   };
-  // const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await axios.get(`/api/users/show/` + localStorage.getItem("userid"));
-  //       const fetchedProducts = response.data.cart;
-  //       console.log(response.data.cart);
-  //       setProducts(fetchedProducts);
-  //     } catch (error) {
-  //       console.error('Error fetching products:', error);
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, []);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`/api/users/show/` + localStorage.getItem("userid"));
+        const fetchedProducts = response.data.cart;
+        console.log(response.data.cart);
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
   
   return (
     <div className="cart">
