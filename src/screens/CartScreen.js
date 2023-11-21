@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+
 
 function CartScreen(props) {
   const cart = useSelector((state) => state.cart);
@@ -17,24 +17,24 @@ function CartScreen(props) {
   const { userInfo } = userSignin;
 
   /////ADDING NOWWW
-  console.log("id:" + localStorage.getItem("userid"));
+ // console.log("id:" + localStorage.getItem("userid"));
   
   
   ////////
   
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
-    try{
-      axios.delete(`api/users/delete-task/` + localStorage.getItem("userid")+ "/" + productId + "/")
-      .then((res)=>{
-        if(res.status === 200){
-          alert("Deleted successfully");
-        }
-      }).catch((e)=> alert(e));
-    }
-    catch(e){
-      alert(e);
-    }
+    // try{
+    //   axios.delete(`api/users/delete-task/` + localStorage.getItem("userid")+ "/" + productId + "/")
+    //   .then((res)=>{
+    //     if(res.status === 200){
+    //       alert("Deleted successfully");
+    //     }
+    //   }).catch((e)=> alert(e));
+    // }
+    // catch(e){
+    //   alert(e);
+    // }
    
   }
   const handleAddToCart = async (productId) => {
@@ -57,20 +57,20 @@ function CartScreen(props) {
       navigate1("/signin?redirect=shipping");
     }
   };
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(`/api/users/show/` + localStorage.getItem("userid"));
-        const fetchedProducts = response.data.cart;
-        console.log(response.data.cart);
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-    fetchProducts();
-  }, []);
+  // const [products, setProducts] = useState([]);
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await axios.get(`/api/users/show/` + localStorage.getItem("userid"));
+  //       const fetchedProducts = response.data.cart;
+  //       console.log(response.data.cart);
+  //       setProducts(fetchedProducts);
+  //     } catch (error) {
+  //       console.error('Error fetching products:', error);
+  //     }
+  //   };
+  //   fetchProducts();
+  // }, []);
   
   return (
     <div className="cart">

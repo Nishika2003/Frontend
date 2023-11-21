@@ -7,8 +7,8 @@ const signin = (email, password) => async(dispatch) => {
     try{
         const {data} = await Axios.post("/api/users/signin", {email, password});
         console.log(data._id);
-        localStorage.setItem("userid", data._id);
-        localStorage.setItem("userInfo",JSON.stringify(data));
+        //localStorage.setItem("userid", data._id);
+        //localStorage.setItem("userInfo",JSON.stringify(data));
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data});
         Cookie.set('userInfo', JSON.stringify(data));
     }catch(error){
@@ -28,7 +28,7 @@ const register = (name, email, password) => async(dispatch) => {
 
 const logout = () => (dispatch) => {
     Cookie.remove('userInfo');
-    localStorage.removeItem("userid");
+    //localStorage.removeItem("userid");
     localStorage.removeItem('userInfo');
     dispatch({ type: USER_LOGOUT});
 };
