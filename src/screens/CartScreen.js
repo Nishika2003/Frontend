@@ -17,24 +17,24 @@ function CartScreen(props) {
   const { userInfo } = userSignin;
 
   /////ADDING NOWWW
- // console.log("id:" + localStorage.getItem("userid"));
+ console.log("id:" + localStorage.getItem("userid"));
   
   
   ////////
   
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
-    // try{
-    //   axios.delete(`api/users/delete-task/` + localStorage.getItem("userid")+ "/" + productId + "/")
-    //   .then((res)=>{
-    //     if(res.status === 200){
-    //       alert("Deleted successfully");
-    //     }
-    //   }).catch((e)=> alert(e));
-    // }
-    // catch(e){
-    //   alert(e);
-    // }
+    try{
+      axios.delete(`api/users/delete-task/` + localStorage.getItem("userid")+ "/" + productId + "/")
+      .then((res)=>{
+        if(res.status === 200){
+          alert("Deleted successfully");
+        }
+      }).catch((e)=> alert(e));
+    }
+    catch(e){
+      alert(e);
+    }
    
   }
   const handleAddToCart = async (productId) => {
